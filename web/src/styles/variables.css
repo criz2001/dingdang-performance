@@ -1,0 +1,76 @@
+/**
+ * 全局样式变量文件
+ * 包含颜色、字体、间距等设计规范
+ */
+
+:root {
+  /* ========== 色彩规范 ========== */
+  /* 主色 */
+  --color-primary: #2563EB;
+  --color-primary-light: #3B82F6;
+  --color-primary-dark: #1D4ED8;
+  --color-primary-bg: #EFF6FF;
+
+  /* 辅助色 */
+  --color-success: #059669;
+  --color-success-light: #10B981;
+  --color-success-bg: #ECFDF5;
+
+  --color-warning: #D97706;
+  --color-warning-light: #F59E0B;
+  --color-warning-bg: #FFFBEB;
+
+  --color-danger: #DC2626;
+  --color-danger-light: #EF4444;
+  --color-danger-bg: #FEF2F2;
+
+  /* 中性色 */
+  --color-bg: #F3F4F6;
+  --color-bg-white: #FFFFFF;
+  --color-bg-gray: #F9FAFB;
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+
+  /* 文字色 */
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-text-placeholder: #9CA3AF;
+  --color-text-disabled: #D1D5DB;
+
+  /* ========== 字体规范 ========== */
+  --font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+
+  /* ========== 间距规范 ========== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+
+  /* ========== 圆角规范 ========== */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* ========== 阴影规范 ========== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* ========== 布局规范 ========== */
+  --sidebar-width: 220px;
+  --sidebar-collapsed-width: 64px;
+  --header-height: 60px;
+  --content-padding: 24px;
+}
