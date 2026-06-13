@@ -1,34 +1,32 @@
-name: Deploy to Render.com
+name: Deploy to Railway
 
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+    inputs:
+      railway_token:
+        description: 'Railway Token'
+        required: true
+        type: string
 
 jobs:
-  deploy-backend:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Deploy Backend
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          DEPLOY_HOOK_URL: ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK }}
-        run: |
-          curl -X POST $DEPLOY_HOOK_URL
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  deploy-frontend:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Deploy Frontend
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          DEPLOY_HOOK_URL: ${{ secrets.RENDER_FRONTEND_DEPLOY_HOOK }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Railway
         run: |
-          curl -X POST $DEPLOY_HOOK_URL
+          npm install -g @railway/cli
+          railway login --token-source --stdin <<< "${{ inputs.railway_token || env.RAILWAY_TOKEN }}"
+
+      - name: Deploy to Railway
+        run: |
+          railway deploy --token "${{ inputs.railway_token || env.RAILWAY_TOKEN }}"
+        env:
+          RAILWAY_TOKEN: ${{ inputs.railway_token || env.RAILWAY_TOKEN }}
